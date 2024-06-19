@@ -18,7 +18,10 @@ function Page() {
   });
 
   React.useEffect(() => {
-    if (user == null) router.push("/");
+    if (user == null) {
+      router.push("/");
+      alert("Please login to access the admin page!");
+    }
   }, [user, router]);
 
   async function handleAddQuote(event: React.FormEvent<HTMLFormElement>) {
