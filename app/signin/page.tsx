@@ -62,7 +62,7 @@ function Page() {
             />
           </label>
           <p className="text-sm">
-            Don't have any account?{" "}
+            Don&apos;t have any account?{" "}
             <Link
               className="font-semibold hover:underline text-teal-500"
               href={"/signup"}

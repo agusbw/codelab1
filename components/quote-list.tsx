@@ -37,7 +37,7 @@ export default function QuoteList() {
           </div>
         ))
       ) : (
-        <p>No quote's added yet</p>
+        <p>No quote&apos;s added yet</p>
       )}
     </div>
   );

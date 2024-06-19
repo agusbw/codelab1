@@ -70,7 +70,7 @@ function Page() {
               value={form.quote}
               id="quote"
               className="border py-1.5 px-3 rounded-md w-full"
-              placeholder="example@mail.com"
+              placeholder="Write quote here!"
             />
           </label>
           <label htmlFor="author">
@@ -90,7 +90,7 @@ function Page() {
               id="author"
               value={form.author}
               className="border py-1.5 px-3 rounded-md w-full"
-              placeholder="author"
+              placeholder="Jhon Doe"
             />
           </label>
           <button
