@@ -7,24 +7,35 @@ import Link from "next/link";
 function Page() {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+  const [error, setError] = React.useState("");
   const router = useRouter();
 
   const handleForm = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const { result, error } = await signUp(email, password);
+    setError("");
+    setLoading(true);
+    const { error } = await signUp(email, password);
 
     if (error) {
-      return console.log(error);
+      setError(error.message);
+      setLoading(false);
+      console.log(error);
+      return;
     }
 
-    // else successful
-    console.log(result);
+    setLoading(false);
     return router.push("/admin");
   };
   return (
     <div className="min-h-screen flex justify-center">
-      <div className="p-4 border rounded-xl h-fit mt-60 space-y-2 max-w-sm w-80">
+      <div className="p-4 border rounded-xl h-fit mt-40 space-y-2 max-w-sm w-80">
         <h1 className="text-3xl font-semibold text-teal-500 ">Sign Up</h1>
+        {error && (
+          <div className="px-2 py-3 bg-red-500/10 text-red-500 rounded-sm">
+            {error}
+          </div>
+        )}
         <form
           onSubmit={handleForm}
           className="flex flex-col gap-4"
@@ -63,8 +74,9 @@ function Page() {
             </Link>
           </p>
           <button
-            className="px-3 py-2 bg-teal-500 text-white hover:bg-teal-600"
+            className="px-3 py-2 bg-teal-500 text-white hover:bg-teal-600 disabled:bg-slate-300 disabled:text-slate-400"
             type="submit"
+            disabled={loading}
           >
             Sign up
           </button>
